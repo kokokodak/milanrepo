@@ -15,6 +15,9 @@ DEPEND="dev-libs/libftdi"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+IUSE="pic"
+REQUIRED_USE="pic"
+
 inherit udev
 
 src_prepare() {
