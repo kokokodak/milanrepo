@@ -7,7 +7,7 @@ DESCRIPTION="An IBM 3270 terminal emulator for the X Window System"
 HOMEPAGE="https://x3270.miraheze.org/wiki/Main_Page"
 SRC_URI="https://x3270.bgp.nu/download/04.04/suite3270-4.4ga4-src.tgz"
 
-LICENSE="not sure yet"
+LICENSE="https://x3270.miraheze.org/wiki/X3270_license"
 SLOT="0"
 KEYWORDS="~amd64"
 
