@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ REQUIRED_USE="pic"
 inherit udev
 
 src_prepare() {
-	eapply_user
+	default
 	sed -i 's|PREFIX = $(DESTDIR)/usr/local|PREFIX=${DESTDIR}|' "${S}/software/Makefile.linux"
 	sed -i '/^GIT_/d' "${S}/software/Makefile.linux"
 }
