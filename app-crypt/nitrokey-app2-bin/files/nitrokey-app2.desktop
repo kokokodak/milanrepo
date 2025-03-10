@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Nitrokey2 application
+Terminal=false
+Name=Nitrokey2
+Exec=nitrokey-app2
+Type=Application
+Icon=nitrokey
+Categories=Utility;
