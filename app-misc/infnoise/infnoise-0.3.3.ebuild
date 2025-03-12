@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="infinite noise TRNG program"
 HOMEPAGE="https://github.com/leetronics/infnoise"
-SRC_URI="https://github.com/leetronics/infnoise/archive/refs/tags/0.3.3.tar.gz"
+SRC_URI="https://github.com/leetronics/infnoise/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="0"
@@ -13,10 +13,6 @@ KEYWORDS="~amd64"
 
 DEPEND="dev-embedded/libftdi"
 RDEPEND="${DEPEND}"
-BDEPEND=""
-
-IUSE="pic"
-REQUIRED_USE="pic"
 
 inherit udev
 
@@ -34,16 +30,16 @@ src_compile() {
 	ftdi_ldflags=$(pkg-config --libs libftdi1)
 
 	origCFLAGS="-fPIC -std=c99 -DLINUX -I Keccak -DGIT_VERSION=\\\"\\\" -DGIT_COMMIT=\\\"\\\" -DGIT_DATE=\\\"\\\""
-	export DESTDIR="${D}"
 
-	cd ${S}/software
-	emake -f Makefile.linux DESTDIR="${D}" CFLAGS="${CFLAGS} ${origCFLAGS} ${ftdi_cflags}" LDFLAGS="${LDFLAGS} ${ftdi_ldflags}" -j$(nproc)
+	cd "${S}"/software
+	emake -f Makefile.linux CFLAGS="${CFLAGS} ${origCFLAGS} ${ftdi_cflags}" LDFLAGS="${LDFLAGS}\
+		   ${ftdi_ldflags}" -j$(nproc)
 }
 
 src_install() {
 	newinitd "${FILESDIR}"/infnoise.initd infnoise
 
-	cd ${S}/software
+	cd "${S}"/software
 	export DESTDIR="${D}"
 	emake -f Makefile.linux install DESTDIR="${D}"
 }
